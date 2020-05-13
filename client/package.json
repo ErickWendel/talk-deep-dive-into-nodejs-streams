@@ -1,0 +1,17 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx http-server -p $PORT ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0",
+    "http-server": "^0.12.3"
+  }
+}

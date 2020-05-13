@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>Watcher</title>
+    <link href="./../resources/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      body {
+        background: white;
+        display: -webkit-flex;
+        -webkit-justify-content: center;
+        -webkit-align-items: center;
+        -webkit-flex-direction: column;
+      }
+      video {
+        width: 800px;
+        background: rgba(0, 0, 0, 0.25);
+
+        background: white url(../resources/desktop.png) center no-repeat;
+        border: 1px solid black;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+    <script src="../deps/socket.io.slim.js"></script>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col">
+        <video id="camera" autoplay></video>
+      </div>
+      <div class="col">
+        <video id="screen" autoplay></video>
+      </div>
+    </div> 
+
+    <script src="app.js"></script>
+  </body>
+</html>
