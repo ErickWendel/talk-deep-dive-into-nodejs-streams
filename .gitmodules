@@ -1,0 +1,6 @@
+[submodule "server-remote-viewer"]
+	path = server-remote-viewer
+	url = https://git.heroku.com/server-remote-viewer.git
+[submodule "app-remote-viewer"]
+	path = app-remote-viewer
+	url = https://git.heroku.com/app-remote-viewer.git
