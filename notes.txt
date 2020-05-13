@@ -1,0 +1,100 @@
+What
+Why
+Where
+How 
+
+
+- Deep Dive on Node.js Streams 
+
+- Problem 
+    single thread
+    high volume of data 
+    events
+    error handling 
+
+What
+    - Node.js has Streams since v0
+    - Created to upload videos feature
+    Concepts:
+        - Event emitter class 
+            -> on.data 
+            -> on.error
+            -> on.error
+        - Buffer and Chunks 
+            -> 
+
+
+    - Divided in categories:
+        - Readable Streams 
+            -> read from a source and emit new events
+            -> read a file and emit each chunk
+
+        - Writable Streams 
+            -> output, such as new file or redirect to other stream 
+        - Duplex Streams
+            -> Readable events table
+            -> Writable events table
+            -> produces the both events 
+            -> differences
+
+        - Transform Streams 
+            -> change each chunk 
+When 
+    If you need to handle large files 
+    If you need to handle videos on demand 
+    If you need to handle large events 
+        - team viewer 
+    .. to process data on demand in general
+        - many automated processes running in the machine building reports
+        - emit events to each other 
+
+How
+    
+    Simple example of a readable stream pipe to writable 
+        - animation on events of readable 
+        - animation on events of writable 
+    Controlling streams flow 
+        - resume, pause stop and push null 
+        https://github.com/ErickWendel/nodejs-certification/blob/master/draft/index8.js (this)
+        https://github.com/ErickWendel/nodejs-certification/blob/master/draft/index16.js (r)
+        https://github.com/ErickWendel/nodejs-certification/blob/master/draft/index7.js (pause, resume)
+    show csvToJSON
+    Iterators
+        for await..
+
+    Piping 
+        = examples using normal pipe 
+            - process.stdin.pipe().pipe(process.stdout)
+            However, notice there are no proper error handlers attached. If a chunk of data were to fail to be properly received, the Readable source or gzip stream will not be destroyed.
+
+        = customizing pipe function
+        = examples using Pipeline from node 
+    Using child_processes 
+        avoid running in node.js main thread 
+            https://github.com/ErickWendel/nodejs-certification/blob/master/draft/examples/get-data-from-child.js
+    Donwloading large data (kaggle)
+        -> show show to download data with percentil 
+
+    Promises vs Streams 
+        promises hapens once 
+        bad practice
+            new Promise(r -> ev.on('data') => )
+    Back pressure
+        - DEBUG=* -> find streams debugger
+        mechanism to handle high data volume 
+
+        more in 
+            https://nodejs.org/es/docs/guides/backpressuring-in-streams/#lifecycle-of-pipe
+            get image
+
+        If the consumer is unable to consume data as fast as the producer can produce it, then the producer will be paused until the consumer catches up.
+
+Conclusion
+    Node.js streams are beautiful, try it out 
+    Use RxJS for using streams 
+
+
+
+https://www.electronjs.org/docs/api/desktop-capturer
+https://nodejs.org/es/docs/guides/backpressuring-in-streams/#lifecycle-of-pipe
+https://github.com/ErickWendel/nodejs-certification/blob/master/draft/index9.js
