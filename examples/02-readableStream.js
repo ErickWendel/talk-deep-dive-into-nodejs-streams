@@ -1,21 +1,21 @@
-const log = (...args) => console.log(...args)
-
+let counter = 0
+const log = (...args) => console.log(`[${++counter}]`, ...args)
 const { Readable } = require('stream')
-const rs = new Readable()
+const readable = new Readable()
 
-rs.on("resume", _ => log("resuming.."))
-rs.on("pause", _ => log("pausing.."))
-rs.on("end", _ => log("No more data!"))
-rs.on("close", () => log("closing.."))
+readable.on("resume", _ => log(`resuming..`))
+readable.on("pause", _ => log(`pausing..`))
+readable.on("end", _ => log(`No more data!`))
+readable.on("close", () => log(`closing..`))
 
-rs.on("data", msg => log(`Chunk read: ${msg}`))
-rs.on("error", msg => log(`Caught error!: ${msg}`))
+readable.on("error", msg => log(`Caught error!: ${msg}`))
+readable.on("data", msg => log(`Chunk read: ${msg}`))
 
-rs.push("ping")
-rs.pause()
-rs.push("pong")
-rs.resume()
-rs.push(null)
+readable.push("ping")
+readable.pause()
+readable.push("pong")
+readable.resume()
+readable.push(null)
 
-rs.emit("error", new Error('**raising error!!'))
+readable.emit("error", new Error('**raising error!!'))
 

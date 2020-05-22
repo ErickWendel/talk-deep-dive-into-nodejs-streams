@@ -1,8 +1,7 @@
-const log = (...args) => console.log(...args)
+let counter = 0
+const log = (...args) => console.log(`[${++counter}]`, ...args)
 const { createWriteStream, promises: { readFile } } = require('fs')
-
-;
-(async () => {
+;(async () => {
     const filename = `test.csv`
     const ws = createWriteStream(filename)
     ws.on("open", _ => log('opened!'))
@@ -20,3 +19,7 @@ const { createWriteStream, promises: { readFile } } = require('fs')
     
     log(`\n${(await readFile(filename)).toString()}`)
 })()
+
+
+
+

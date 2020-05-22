@@ -7,3 +7,4 @@ const rs = createReadStream("/dev/urandom");
         console.log('words:\n', chunk)
     }
 })()
+

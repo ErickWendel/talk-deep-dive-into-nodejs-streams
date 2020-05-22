@@ -23,6 +23,6 @@ dp.on("data", msg => console.log('msg', msg.toString()))
 dp.write("avc")
 dp.write("acc")
 
-dp.pipe((dest) => dest1 => {
+dpc.pipe((dest) => dest1 => {
     console.log('called!!')
 })
