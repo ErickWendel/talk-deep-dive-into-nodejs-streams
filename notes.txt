@@ -8,11 +8,20 @@ How
 
 - Problem 
     single thread
+    - vs traditional approach 
+        - axios.get ... wait download 05 gb 
+        - process on file 
+        - remove file 
+            -> time to feedback 
+            -> storage 
+            -> memory usage 
+
     high volume of data 
     events
     error handling 
 
 What
+
     - Node.js has Streams since v0
     - Created to upload videos feature
     Concepts:
@@ -40,8 +49,10 @@ What
         - Transform Streams 
             -> change each chunk 
 When 
+    on-demand processing 
     If you need to handle large files 
     If you need to handle videos on demand 
+    If you need to download and process on demand
     If you need to handle large events 
         - team viewer 
     .. to process data on demand in general
@@ -69,6 +80,8 @@ How
 
         = customizing pipe function
         = examples using Pipeline from node 
+        = only pipe a readable stream 
+
     Using child_processes 
         avoid running in node.js main thread 
             https://github.com/ErickWendel/nodejs-certification/blob/master/draft/examples/get-data-from-child.js
@@ -88,6 +101,9 @@ How
             get image
 
         If the consumer is unable to consume data as fast as the producer can produce it, then the producer will be paused until the consumer catches up.
+    Node 14 
+        - calls destroy after finishing by default
+            -> show video using node 11 and node 14
 
 Conclusion
     Node.js streams are beautiful, try it out 
@@ -98,3 +114,5 @@ Conclusion
 https://www.electronjs.org/docs/api/desktop-capturer
 https://nodejs.org/es/docs/guides/backpressuring-in-streams/#lifecycle-of-pipe
 https://github.com/ErickWendel/nodejs-certification/blob/master/draft/index9.js
+https://devhints.io/nodejs-stream
+https://github.com/substack/stream-handbook
