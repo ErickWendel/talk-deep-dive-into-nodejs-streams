@@ -7,7 +7,7 @@ const {
 } = require('fs')
 
 const filename = `${__dirname}/logger.log`
-
+ 
 const mapCommands = new Transform({
     transform(chunk, enc, cb) {
         const cmd = chunk.toString().trim()

@@ -28,10 +28,7 @@ What
         - Event emitter class 
             -> on.data 
             -> on.error
-            -> on.error
       
-
-
     - Divided in categories:
         - Readable Streams 
             -> read from a source and emit new events
@@ -68,7 +65,6 @@ How
         https://github.com/ErickWendel/nodejs-certification/blob/master/draft/index8.js (this)
         https://github.com/ErickWendel/nodejs-certification/blob/master/draft/index16.js (r)
         https://github.com/ErickWendel/nodejs-certification/blob/master/draft/index7.js (pause, resume)
-    show csvToJSON
     Iterators
         for await..
 
@@ -80,6 +76,7 @@ How
         = customizing pipe function
         = examples using Pipeline from node 
         = only pipe a readable stream 
+    show csvToJSON
 
     Using child_processes 
         avoid running in node.js main thread 
@@ -106,16 +103,15 @@ How
 
 Conclusion
     Node.js streams are beautiful, try it out 
-    Use RxJS for using streams 
 
 
 
+https://giphy.com
 https://www.electronjs.org/docs/api/desktop-capturer
 https://nodejs.org/es/docs/guides/backpressuring-in-streams/#lifecycle-of-pipe
 https://github.com/ErickWendel/nodejs-certification/blob/master/draft/index9.js
 https://devhints.io/nodejs-stream
 https://github.com/substack/stream-handbook
-
 
 https://s3.amazonaws.com/four.livejournal/20091117/jsconf.pdf
 https://nodejs.org/docs/

@@ -2,11 +2,11 @@ let counter = 0
 const log = (...args) => console.log(`[${++counter}]`, ...args)
 
 const { createReadStream } = require('fs')
-const { promisify } = require('util')
-const { Transform, Writable, pipeline: pipeSync } = require('stream')
+const { Transform, Writable, pipeline } = require('stream')
 const csvtojson = require('csvtojson')
 
-const pipeline = promisify(pipeSync)
+const { promisify } = require('util')
+const pipelineAsync = promisify(pipeline)
 const datasource = `${__dirname}/test.csv`
 const currentYear = new Date().getFullYear()
 
@@ -16,7 +16,8 @@ const mapAge = new Transform({
         const item = JSON.parse(chunk)
         const age = currentYear - item.birthYear
         if (age < 0) {
-            const error = JSON.stringify({ message: 'age must be higher than 0', item })
+            const message = 'invalid age'
+            const error = JSON.stringify({ message, item })
             return cb(error)
         }
 
@@ -49,24 +50,20 @@ createReadStream(datasource)
     .pipe(showOutput)
     .on("error", msg => log('showOutput error!', msg))
 
-    .on("finish", msg => log("process finished!"))
-    .on("error", msg => log("error"))
 
+{ 
+    (async () => {
+        try {
+            await pipelineAsync(
+                createReadStream(datasource),
+                csvtojson(),
+                mapAge,
+                showOutput,
+            )
+            console.log('finished!')
+        } catch (error) {
+            log('error on pipeline!', error)
+        }
 
-    {
-        (async () => {
-            try {
-                await pipeline(
-                    createReadStream(datasource),
-                    csvtojson(),
-                    mapAge,
-                    showOutput,
-                )
-    
-            } catch (error) {
-                log('error on pipeline!', error)
-            }
-    
-        })()
-    
-    }
+    })()
+}
